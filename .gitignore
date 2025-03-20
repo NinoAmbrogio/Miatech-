@@ -1,3 +1,4 @@
 /lib
 
 !other/
+*to_ignore.txt
