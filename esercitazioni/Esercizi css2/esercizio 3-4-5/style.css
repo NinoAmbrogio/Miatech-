@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.flex {
+  display: flex;
+}
+
+.container {
+  flex-direction: row-reverse;
+  height: 70px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.item {
+  width: 350px;
+  height: 40px;
+  background-color: green;
+  align-items: center;
+  justify-content: center;
+}
