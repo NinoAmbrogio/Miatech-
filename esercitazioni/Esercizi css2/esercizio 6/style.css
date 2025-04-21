@@ -11,26 +11,36 @@
 .container {
   height: 70px;
   gap: 12px;
+  
 }
 
 .item {
+  align-items: center;
+justify-content: center;
   width: 350px;
   height: 40px;
   background-color: green;
-  align-items: center;
-  justify-content: center;
+  
+ 
 
 }
 
 .item:nth-child(1){
 flex-shrink: 1;
+flex-basis: 50px;
+
+
 }
 
 .item:nth-child(2){
   flex-grow: 1;
+  align-self: center;
+  
+  
 
 }
 .item:nth-child(3){
 flex-grow: 2;
+align-self: self-end;
 
 }
