@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.flex {
+  display: flex;
+}
+
+.container {
+  height: 70px;
+  gap: 12px;
+}
+
+.item {
+  width: 350px;
+  height: 40px;
+  background-color: green;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.item:nth-child(1){
+flex-shrink: 1;
+}
+
+.item:nth-child(2){
+  flex-grow: 1;
+
+}
+.item:nth-child(3){
+flex-grow: 2;
+
+}
