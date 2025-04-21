@@ -1,0 +1,26 @@
+*{
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+.grid{
+    display: grid;
+}
+
+
+
+.container{
+    grid-template-columns:auto auto auto;
+    text-align: center;
+    padding: 20px 20px ;
+   
+}
+
+.container-item{
+
+background-color: brown;
+border: 1px solid black;
+line-height: 75px;
+}
+
