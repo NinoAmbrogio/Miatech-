@@ -4,6 +4,30 @@
   margin: 0;
 }
 
+@media (max-width: 480px) {
+  body {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+  }
+
+  .calculator {
+    width: 100%;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .display {
+    font-size: 1.5rem;
+    padding: 10px;
+  }
+
+  .buttons button {
+    padding: 15px;
+    font-size: 1rem;
+  }
+}
+
 body {
   background-color: grey;
   display: flex;
@@ -31,26 +55,27 @@ body {
   overflow-x: auto;
 }
 .buttons {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-  }
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
 
-  .buttons button {
-    padding: 20px;
-    font-size: 1.2rem;
-    border: none;
-    border-radius: 10px;
-    background-color: #e0e0e0;
-    cursor: pointer;
-    transition: background-color 0.2s; }
+.buttons button {
+  padding: 20px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #e0e0e0;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
 
-    .buttons .equal {
-        grid-column: span 2;
-        background-color: #4caf50;
-        color: white;
-      }
-      .buttons .clear {
-        background-color: #f44336;
-        color: white;
-      }
+.buttons .equal {
+  grid-column: span 2;
+  background-color: #4caf50;
+  color: white;
+}
+.buttons .clear {
+  background-color: #f44336;
+  color: white;
+}
