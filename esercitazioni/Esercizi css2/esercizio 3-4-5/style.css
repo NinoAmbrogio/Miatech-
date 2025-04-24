@@ -13,12 +13,13 @@
   height: 70px;
   flex-wrap: wrap;
   gap: 12px;
+  align-items: center;
+  justify-content: center;
 }
 
 .item {
   width: 350px;
   height: 40px;
   background-color: green;
-  align-items: center;
-  justify-content: center;
+ 
 }
