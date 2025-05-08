@@ -93,13 +93,141 @@ switch (true) {
   default:
     console.log("Valore non valido");
 }
-  */  
+  */
 /*array di numeri*/
-const array = [1,2,3,4,5]
+const array = [1, 2, 3, 4, 5];
 /*somma i numeri*/
-let numbers =array
-let result = 0
-for (let i = 0 ; i< numbers.length; i++){
-  result += numbers[i]
+let numbers = array;
+let result = 0;
+for (let i = 0; i < numbers.length; i++) {
+  result += numbers[i];
 }
-console.log (result)
+console.log(result);
+/*inverted array*/
+const invertedArray = [];
+
+for (let i = array.length - 1; i >= 0; i--) {
+  invertedArray.push(array[i]);
+}
+console.log(invertedArray);
+/*popolamento array*/
+/*const parole = [];
+for (let i = 0; i < 5; i++) {
+  let input = prompt(i + 1);
+  parole.push(input);
+}
+console.log(parole);
+
+for (let i = 0; i < parole.length; i++) {
+  if (parole[i].length % 2 !== 0) {
+    console.log(parole[i]);
+  }
+
+}*/
+/* crea un oggetto*/
+let person = {
+  name: "giorgio",
+  age: 22,
+  city: "livorno",
+};
+console.log(person);
+/*modifica la proprietà*/
+person.age = 25;
+console.log(person);
+/*aggiungi una nuova proprieta(job)*/
+person.job = "astronauta";
+console.log(person);
+/* iterazione delle proprieta*/
+for (let key in person) {
+  console.log(key + ":" + person[key]);
+}
+/*funzioni annidate*/
+/*function outerfunction(x) {
+  function innerfunction(y) {
+    return x + y;
+  }
+  return innerfunction;
+}
+
+const addTen = outerfunction(10)
+console.log(addTen(5))*/
+
+/* persistenza delle variabili locali*/
+function outerfunction(x,initialValue) {
+  let result = initialValue
+  function innerfunction(y) {
+     result+=y
+     return result
+  }
+  return innerfunction;
+}
+
+
+/* COUNTER */
+function createcounter(){
+  let count = 0;
+return{
+  increment:function(){
+    count += 1
+  },
+  decrement:function(){
+    count -= 1
+    return count;
+  }
+}
+}
+
+/*object keys*/
+const student = {
+  name: "luca",
+  age: 17,
+  grade: 10,
+  school: "liceo dei d",
+};
+const keys = Object.keys(student);
+console.log(keys);
+
+/*object values*/
+
+const values = Object.values(student);
+console.log(values);
+
+/*object entries*/
+const entries = Object.entries(student);
+console.log(entries);
+entries.forEach(([key, value]) => {
+  console.log(`${key}: ${value}`);
+});
+
+/* foreachmap*/
+const nmeri = [1, 2, 3, 4, 5];
+nmeri.forEach((num) => {
+  console.log(num * 2);
+});
+const quadrati = nmeri.map((num) => num * num);
+
+console.log(quadrati);
+/* filter & find */
+const students = [
+  { name: "Luca", grade: 75 },
+  { name: "Maria", grade: 55 },
+  { name: "Giovanni", grade: 85 },
+  { name: "Elena", grade: 40 },
+  { name: "Marco", grade: 60 },
+];
+
+const passedstudents = students.filter((student) => student.grade >= 60);
+const failedStudent = students.find((student) => student.grade < 60);
+console.log("Passed Students:", passedstudents);
+console.log("Failed Student:", failedStudent);
+/*reduce & sort */
+const expenses=[12,10,15,20]
+const totalexpenses= expenses.reduce((accumulator,currentvalue)=> accumulator + currentvalue, 0)
+const words=["banana","apple", "cherry", "date"]
+words.sort()
+
+console.log(totalexpenses);
+console.log(words);
+
+
+
