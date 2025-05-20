@@ -217,3 +217,44 @@ clearInterval(stampa)
     }
   }
   dividi(0,5)
+  //gestione di piu tipi di errori
+
+ function paperino(input){
+    try{if (typeof  input !== 'string'){
+        throw new TypeError("il valore non e' una stringa")
+    }
+     if (input.length === 0 ){
+        throw new Error("la stringa non puo essere vuota")
+     } 
+     console.log("Stringa valida:");
+}
+catch(error){
+    if(error instanceof TypeError){
+        console.error("errore di tipo", error.message)
+    }
+    else{
+        console.error("errore", error.message)
+    }
+}
+    
+
+
+  }
+  paperino("")
+ //Creare uno script che utilizzi un blocco try, catch e finally per gestire un errore e stampare un messaggio che indica che l'operazione è stata completata, indipendentemente dal risultato.
+
+ function pluto(){
+    try { let nero = 12
+          let bianco = nero.toUpperCase()
+          console.log(bianco);
+    }
+    catch (error){
+     console.error("errore fatale", error.message)
+    }
+    finally {
+        console.log("l'operazione e' stata completata");
+        
+    }
+ }
+
+ pluto()
