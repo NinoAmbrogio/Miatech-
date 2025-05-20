@@ -203,8 +203,6 @@ const intervallo = setInterval(interval, 4000);
 clearInterval(stampa)    
  }, 5000);
  //gestione di un errore semplice
-//Creare uno script che utilizzi un blocco try per eseguire una divisione e un blocco catch per gestire un errore se il divisore è zero.
-//  Stampare un messaggio di errore nella console se viene sollevata un'eccezione.
 
   function dividi(a,b){
     try{
