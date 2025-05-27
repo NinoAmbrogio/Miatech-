@@ -299,3 +299,21 @@ return new Promise((resolve) => {
 Promise.allSettled([olly(), benji(), checampioni()])
 .then((risultati) => {console.log("tutti i risultati", risultati);
 })
+
+// funzione asincrona semplice
+
+function promessalow(){
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("promessa risolta")
+    }, 2000);
+  })
+};
+
+async function execute(){
+  console.log("promessa in attesa");
+  let messaggio = await promessalow();
+  console.log("risultato", messaggio);
+
+}
+execute()
