@@ -267,3 +267,35 @@ Promise.race([pluto(), minnie()])
   console.log("la prima promessa e'stata risolta", risultati);
 });
 
+//utilizzare promise con all.Settled
+
+//Creare tre funzioni che restituiscano promesse, due delle quali si risolvono e una viene rifiutata.
+ ///Utilizzare Promise.allSettled per eseguire tutte le promesse in parallelo e stampare i risultati quando tutte sono state completate, indipendentemente dal fatto che siano state risolte o rifiutate.
+            
+function olly(){
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("prima promessa risolta")
+    }, 2000);
+  })
+
+};
+
+function benji(){
+  return new Promise((reject) => 
+    setTimeout(() => {
+    reject("la seconda promessa non si e risolta")
+  }, 1000))
+};
+
+function checampioni(){
+return new Promise((resolve) => {
+  setTimeout(() => {
+    resolve("terza promessa risolta")
+  }, 3000);
+})
+}
+
+Promise.allSettled([olly(), benji(), checampioni()])
+.then((risultati) => {console.log("tutti i risultati", risultati);
+})

@@ -1,20 +1,27 @@
-function pluto (){
+function olly(){
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve ("promessa risolta dopo 3 secondi")
-    }, 3000);
+      resolve("prima promessa risolta")
+    }, 2000);
   })
+
 };
 
-function minnie (){
-  return new Promise((resolve) => {
+function benji(){
+  return new Promise((reject) => 
     setTimeout(() => {
-      resolve("promessa risolta dopo 5 secondi")
-    }, 5000);
-  } )
+    reject("la seconda promessa non si e risolta")
+  }, 1000))
 };
 
-Promise.race([pluto(), minnie()])
-.then((risultati) => {
-  console.log("tutte le promesse sono state risolte", risultati);
-});
+function checampioni(){
+return new Promise((resolve) => {
+  setTimeout(() => {
+    resolve("terza promessa risolta")
+  }, 3000);
+})
+}
+
+Promise.allSettled([olly(), benji(), checampioni()])
+.then((risultati) => {console.log("tutti i risultati", risultati);
+})
