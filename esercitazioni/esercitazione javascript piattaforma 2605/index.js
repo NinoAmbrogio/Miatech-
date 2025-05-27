@@ -167,4 +167,26 @@ function mario() {
 }
 mario()
 .catch(error => {console.error("errore",error.message)})
-//
+//gestione degli errori con then e catch
+
+
+function pomodoro(condition){
+  return new Promise((resolve,reject) =>{
+    if (condition){resolve("evviva si e' risolto")}
+    else{
+      reject(new Error("la condizione e' falsa "))
+    }
+
+  })
+}
+
+pomodoro(true)
+.then(messaggio => {console.log("successo", messaggio);
+})
+.catch(errore => {
+  console.error("errore",errore.message)
+})
+
+pomodoro(false)
+.then(messaggio =>{ console.log("successo",messaggio)})
+.catch(errore => {console.error("errore fatale", errore.message)})
