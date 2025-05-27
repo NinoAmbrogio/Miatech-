@@ -14,8 +14,7 @@ function minnie (){
   } )
 };
 
-Promise.all([pluto(), minnie()])
+Promise.race([pluto(), minnie()])
 .then((risultati) => {
   console.log("tutte le promesse sono state risolte", risultati);
-})
-
+});
