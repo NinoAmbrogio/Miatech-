@@ -217,5 +217,31 @@ paperino()
     console.log(messaggio3);
   })
   .catch((errore) => {
-    console.error("Si è verificato un errore:", errore);
+    console.error("error:", errore);
   });
+
+  //utilizzare promise all
+  //  Creare due funzioni che restituiscano promesse che si risolvono dopo tempi diversi.
+  //  Utilizzare Promise.all per eseguire entrambe le promesse in parallelo e stampare i risultati quando entrambe sono risolte.
+            
+function pluto (){
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve ("promessa risolta dopo 3 secondi")
+    }, 3000);
+  })
+};
+
+function minnie (){
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("promessa risolta dopo 5 secondi")
+    }, 5000);
+  } )
+};
+
+Promise.all([pluto(), minnie()])
+.then((risultati) => {
+  console.log("tutte le promesse sono state risolte", risultati);
+})
+

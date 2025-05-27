@@ -1,26 +1,21 @@
-let cipolla = Math.random ();
+function pluto (){
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve ("promessa risolta dopo 3 secondi")
+    }, 3000);
+  })
+};
 
-function paperino(){
-  return new Promise((resolve,reject) => {
-    if (cipolla > 0.5){resolve(cipolla)}
-    else{
-      reject(new Error())
-    }
+function minnie (){
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("promessa risolta dopo 5 secondi")
+    }, 5000);
   } )
-}
+};
 
-paperino()
-.then((messaggio) => {
-    console.log("Passo 1:", messaggio);
-    return "Passo 2 completato.";
-  })
-  .then((messaggio2) => {
-    console.log(messaggio2);
-    return "Passo 3 completato.";
-  })
-  .then((messaggio3) => {
-    console.log(messaggio3);
-  })
-  .catch((errore) => {
-    console.error("Si è verificato un errore:", errore);
-  });
+Promise.all([pluto(), minnie()])
+.then((risultati) => {
+  console.log("tutte le promesse sono state risolte", risultati);
+})
+
