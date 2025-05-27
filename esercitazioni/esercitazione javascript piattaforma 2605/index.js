@@ -132,7 +132,6 @@ roberto().then((numero) => {console.log("numero generato", numero);
 })
 
 //catena di promesse con gestione degli errori 
- //Creare una funzione che restituisca una promessa che può risolversi o essere rifiutata in base a un valore casuale. Utilizzare then per creare una catena di promesse che manipoli il risultato se la promessa si risolve e gestisca l'errore se la promessa viene rifiutata. Stampare i risultati finali o i messaggi di errore.
   
  function alberto(){
   return new Promise((resolve, reject) => {
@@ -155,3 +154,17 @@ roberto().then((numero) => {console.log("numero generato", numero);
 }).catch(error =>{console.error("errore", error.message)})
 ;
 
+//gestione degli errori con catch
+function mario() {
+  return new Promise((resolve,reject) =>{
+    let antonio = 12;
+    if (antonio > 22){resolve(antonio)}
+    else{
+      reject(new Error("errato"))
+    }
+  })
+
+}
+mario()
+.catch(error => {console.error("errore",error.message)})
+//
