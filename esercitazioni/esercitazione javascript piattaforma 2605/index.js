@@ -62,11 +62,18 @@ messaggio().then((messaggio) => {
 */
 
 //gestione di promessa con catch 
+
+let marco = true 
+
 function messaggio() {
-  return new Promise((resolve) => {
+  return new Promise((resolve,reject) => {
     setTimeout(() => {
-      resolve("La promessa e' stata mantenuta dopo 2 secondi");
-    }, ciao);
+      if(marco){resolve("La promessa e' stata mantenuta dopo 2 secondi")
+      }
+      else {reject("la promessa non e' stata mantenuta")
+      }
+    }, 2000);
+
   });
 }
 
