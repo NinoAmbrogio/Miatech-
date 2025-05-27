@@ -136,18 +136,22 @@ roberto().then((numero) => {console.log("numero generato", numero);
   
  function alberto(){
   return new Promise((resolve, reject) => {
-   let pino = Math.random() > 0.5;
-   if (pino){resolve("successo")}
+   let pino = Math.random();
+   if (pino > 0.5 ){resolve(pino)}
    else{
-    reject("errore")
+    reject(new Error(" il numero e' troppo basso"))
    }
     
   })
  }
 
  alberto()
- .then((messaggio) => {
-  console.log(messaggio);
-  return messaggio.
-  
- })
+ .then((result) => {
+  console.log(result);
+  return result * 4
+}).then(multiplied =>{
+  return multiplied *2
+}).then(finalresult =>{console.log(finalresult);
+}).catch(error =>{console.error("errore", error.message)})
+;
+
