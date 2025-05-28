@@ -377,6 +377,7 @@ function francesco(risolvi){
 
   function fetchDatiDaAPI(){
     fetch('https://dummyjson.com/products?limit=12&skip=12')
+
     .then(response => {
       if (!response.ok) {
         throw new Error(`Errore nella richiesta: ${response.status}`);
@@ -390,4 +391,55 @@ function francesco(risolvi){
       console.error("Si è verificato un errore:", errore.message);
     });
 }
-//
+//eseguire richiesta post
+
+const post = {
+    userId: 1,
+    id: 1,
+    title: 'Lorem ipsum',
+    completed: 'true'
+}
+
+
+async function postData(url){
+    try {
+        const res = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify(post)
+        });
+        const data = await res.json();
+        console.log(data)
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+postData("https://jsonplaceholder.typicode.com/todos");
+
+//gestione degli errori con async e await
+
+const API_URL = 'https://jsonplaceholder.typicode.com/posts'
+
+async function getData(){
+  try {
+    const response = await fetch(API_URL);
+    if (!response.ok) {
+      throw new Error('errore')
+    }
+ const dati = await response.json();
+    console.log('Dati ricevuti:', dati);
+  } catch (errore) {
+    console.error('Si è verificato un errore durante la richiesta:', errore.message);
+  }
+}
+
+getData()
+
+// comprendere un errore cors
+fetch('http://example.com')
+  .then(response => response.text())
+  .then(data => console.log(data))
+  .catch(error => console.error('Errore nella fetch:', error));
