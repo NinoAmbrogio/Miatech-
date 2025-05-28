@@ -319,8 +319,6 @@ async function execute(){
 execute()
 //gestione errory con try e catch
 
-//creare una funzione asincrona che utilizzi await per attendere una promessa che può essere risolta o rifiutata in base a un valore booleano passato come parametro.
-//  Utilizzare try e catch per gestire l'errore e stampare il messaggio di errore.
             
 function francesco(risolvi){
   return new Promise((resolve,reject) => {
@@ -343,3 +341,37 @@ function francesco(risolvi){
   }
 
   gestionepromessa()
+
+  // Creare due funzioni asincrone che restituiscano promesse che si risolvono dopo tempi diversi.
+  //  Creare una terza funzione asincrona che utilizzi await per chiamare le prime due funzioni in serie e stampare i risultati quando entrambe sono risolte.
+  
+   async function claudio(){
+    return new Promise((resolve) =>{
+      setTimeout(() => {
+        resolve("risolta dopo 2 secondi")
+      }, 2000);
+    })
+  
+  }
+
+  async function bisio(){
+    return new Promise((resolve)=>{
+      setTimeout(() => {
+        resolve("risolta dopo 1 secondo")
+      }, 1000);
+    })
+  }
+
+  async function eseguientrambe(){
+
+    const risultatobisio = await bisio();
+    console.log(risultatobisio);
+    
+    const risultatoclaudio = await claudio();
+    console.log(risultatoclaudio);
+  }
+
+  eseguientrambe()
+
+  // esegui una richiesta get seplice
+  
