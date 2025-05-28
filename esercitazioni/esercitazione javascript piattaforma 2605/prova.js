@@ -1,17 +1,21 @@
-// funzione asincrona semplice
-
-function promessalow(){
-  return new Promise((resolve) => {
+function francesco(risolvi){
+  return new Promise((resolve,reject) => {
     setTimeout(() => {
-      resolve("promessa risolta")
-    }, 2000);
-  })
-};
-
-async function execute(){
-  console.log("promessa in attesa");
-  let messaggio = await promessalow();
-  console.log("risultato", messaggio);
-
+      if (risolvi){
+        resolve("promessa risolta")
+      }
+      else {reject ("la promessa non si e risolta")}
+    
+  }, 1000);})
 }
-execute()
+  async function gestionepromessa(resolve){
+    try{
+      const result = await francesco(resolve);
+      console.log(result);
+    }
+    catch (errore){
+      console.error(errore);
+    }
+  }
+
+  gestionepromessa(true)

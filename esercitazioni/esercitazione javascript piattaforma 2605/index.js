@@ -317,3 +317,29 @@ async function execute(){
 
 }
 execute()
+//gestione errory con try e catch
+
+//creare una funzione asincrona che utilizzi await per attendere una promessa che può essere risolta o rifiutata in base a un valore booleano passato come parametro.
+//  Utilizzare try e catch per gestire l'errore e stampare il messaggio di errore.
+            
+function francesco(risolvi){
+  return new Promise((resolve,reject) => {
+    setTimeout(() => {
+      if (risolvi){
+        resolve("promessa risolta")
+      }
+      else {reject ("la promessa non si e risolta")}
+    
+  }, 1000);})
+}
+  async function gestionepromessa(resolve){
+    try{
+      const result = await francesco(resolve);
+      console.log(result);
+    }
+    catch (errore){
+      console.error(errore);
+    }
+  }
+
+  gestionepromessa()
