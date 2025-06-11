@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            spacing: {
+              margin: "2rem",
+              padding: "12rem",
+            },
+            colors: {
+              primary: "#d2691e",
+              secondary: "#006400",
+              tertiary: "#9400d3",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body>
+    <div class="flex h-screen justify-center items-center">
+      <div class="flex gap-12 center">
+        <button class="px-10 py-4 bg-primary">1</button>
+        <button class="px-10 py-4 bg-secondary">2</button>
+        <button class="px-10 py-4 bg-tertiary">3</button>
+      </div>
+    </div>
+  </body>
+</html>

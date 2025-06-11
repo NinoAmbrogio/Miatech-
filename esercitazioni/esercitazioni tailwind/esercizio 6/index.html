@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            spacing: {
+              margin: "2rem",
+              padding: "12rem",
+            },
+            colors: {
+              custom: "#b77979",
+              primary: "#00ff00	",
+              secondary: "#000080",
+              tertiary: "#0000ff"
+            },
+            fontFamily:{
+                 sans: ['Inter', 'sans-serif'],
+            }
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-grey-300">
+    <h2 class="text-primary font-bold fontFamily border-4 border-blue-400">Benvenuto sul mio sito!</h2>
+    <p class="text-secondary fontFamily border-4 border-red-400">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem facilis nemo quam. Doloremque ipsam laboriosam, illo magnam rem minima deleniti, et, eligendi voluptatibus facere dolor quae architecto. Ea, sunt maxime!</p>
+
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode:"media",
+        theme: {
+          extend: {
+            spacing: {
+              margin: "2rem",
+              padding: "12rem",
+            },
+            colors: {
+              primary: "#d2691e",
+              secondary: "#006400",
+              tertiary: "#9400d3",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-white dark:bg-black">
+    <h1 class="text-primary dark:text-white">Benvenuto nel mio sito!</h1>
+    <p class="text-secondary dark:text-white">prenditi un Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, ratione.</p>
+    <a class="text-tertiary dark:text-white" href="#">Link</a>
+  </body>
+</html>
