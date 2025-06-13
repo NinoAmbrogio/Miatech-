@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        brand: "#f97316", 
+        accent: "#0ea5e9", 
+      },
+    },
+  },
+};</script>
+    <style type="text/tailwindcss">
+  @layer base {
+    h1 {
+      @apply text-4xl font-bold text-brand;
+    }
+
+    p {
+      @apply text-gray-600 text-base;
+    }
+  }
+
+  @layer components {
+    .card {
+      @apply p-6 rounded-lg shadow-md bg-white border border-gray-200;
+    }
+
+    .btn {
+      @apply px-4 py-2 rounded-md text-white font-semibold;
+    }
+
+    .btn-primary {
+      @apply bg-brand hover:bg-orange-600;
+    }
+
+    .btn-secondary {
+      @apply bg-accent hover:bg-blue-700;
+    }
+  }
+
+  @layer utilities {
+    
+
+    .shadow {
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+    }
+  }
+</style>
+</head>
+<body class="bg-gray-100 p-8">
+  <h1>Ciao</h1>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, fugiat!</p>
+
+  <div class="card mt-6 shadow-deep">
+    <h2 class="text-xl font-semibold mb-2">card</h2>
+    <p>Lorem, ipsum.</p>
+    <div class="mt-4 space-x-2">
+      <button class="btn btn-primary">Primario</button>
+      <button class="btn btn-secondary rotate-y">Secondario</button>
+    </div>
+  </div>
+</body>
