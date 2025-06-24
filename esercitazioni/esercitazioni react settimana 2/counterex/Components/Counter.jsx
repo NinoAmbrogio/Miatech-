@@ -24,7 +24,8 @@ const Counter = () => {
 
     useEffect(() =>{
         document.title = `${counter}`
-    }, [counter])
+    }, [counter]);
+    
 
   return (
     <>
