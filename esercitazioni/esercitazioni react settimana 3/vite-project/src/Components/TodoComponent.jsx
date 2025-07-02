@@ -1,23 +1,29 @@
-import React, { useState, useCallback , useMemo } from 'react';
+import React, { useState, useCallback , useMemo, useRef, useEffect , useContext } from 'react';
 import useFetch from './useFetch';
 import useFilteredTodos from './UseFilteredTodos'; 
+import { TodoContext } from './TodoContext';
 
-const TodoComponent = ({ url }) => {
-  const { data, loading, error } = useFetch(url);
+
+const TodoComponent = () => {
+  const { todos, loading, error } = useContext(TodoContext);
   const [search, setSearch] = useState('');
+  const inputRef = useRef(null);
 
-   const handleSearchChange = useCallback((e) => {
+  useEffect(() => {
+    if (!loading && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [loading]);
+
+  const handleSearchChange = useCallback((e) => {
     setSearch(e.target.value);
   }, []);
 
-  
-
-   const filteredTodos = useMemo(() => {
-    const todos = data || [];
-    return todos.filter(todo =>
+  const filteredTodos = useMemo(() => {
+    return todos.filter((todo) =>
       todo.title.toLowerCase().includes(search.toLowerCase())
     );
-  }, [data, search]);
+  }, [todos, search]);
 
   if (loading) return <p>Caricamento...</p>;
   if (error) return <p>Errore: {error}</p>;
@@ -25,18 +31,17 @@ const TodoComponent = ({ url }) => {
   return (
     <div>
       <h2>Lista TODO</h2>
-
       <input
+        ref={inputRef}
         type="text"
         value={search}
         onChange={handleSearchChange}
         placeholder="Cerca per titolo..."
       />
-
       <ul>
-        {filteredTodos.map(todo => (
+        {filteredTodos.map((todo) => (
           <li key={todo.id}>
-            {todo.title} — {todo.completed ? 'completato' : ' non completato'}
+            {todo.title} — {todo.completed ? 'completato' : 'non completato'}
           </li>
         ))}
       </ul>
