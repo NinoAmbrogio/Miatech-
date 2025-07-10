@@ -2,12 +2,17 @@ import React, { useState, useCallback , useMemo, useRef, useEffect , useContext 
 import useFetch from './useFetch';
 import useFilteredTodos from './UseFilteredTodos'; 
 import { TodoContext } from './TodoContext';
+import { useSearchParams, Link } from 'react-router-dom';
+
+
 
 
 const TodoComponent = () => {
   const { todos, loading, error } = useContext(TodoContext);
-  const [search, setSearch] = useState('');
   const inputRef = useRef(null);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const search = searchParams.get('search') || ''; 
 
   useEffect(() => {
     if (!loading && inputRef.current) {
@@ -15,9 +20,10 @@ const TodoComponent = () => {
     }
   }, [loading]);
 
-  const handleSearchChange = useCallback((e) => {
-    setSearch(e.target.value);
-  }, []);
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchParams(value ? { search: value } : {}); 
+  };
 
   const filteredTodos = useMemo(() => {
     return todos.filter((todo) =>
@@ -41,7 +47,8 @@ const TodoComponent = () => {
       <ul>
         {filteredTodos.map((todo) => (
           <li key={todo.id}>
-            {todo.title} — {todo.completed ? 'completato' : 'non completato'}
+            {todo.title} — {todo.completed ? 'completato' : 'non completato'}{' '}
+            <Link to={`/todo/${todo.id}`}>Dettagli</Link>
           </li>
         ))}
       </ul>
