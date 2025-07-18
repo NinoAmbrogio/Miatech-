@@ -1,35 +1,48 @@
-import React, { useState, useCallback , useMemo, useRef, useEffect , useContext } from 'react';
-import useFetch from './useFetch';
-import useFilteredTodos from './UseFilteredTodos'; 
-import { TodoContext } from './TodoContext';
+import React, { useRef, useEffect, useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams, Link } from 'react-router-dom';
-
-
-
+import { fetchTodos, completeTodo } from '../Slices/todoSlice';
 
 const TodoComponent = () => {
-  const { todos, loading, error } = useContext(TodoContext);
+  const dispatch = useDispatch();
   const inputRef = useRef(null);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const search = searchParams.get('search') || ''; 
+  const search = searchParams.get('search') || '';
 
+  
+  const { todos: todoList = [], loading, error } = useSelector(
+    (state) => state.todos || {}
+  );
+
+  
+  useEffect(() => {
+    dispatch(fetchTodos());
+  }, [dispatch]);
+
+  
   useEffect(() => {
     if (!loading && inputRef.current) {
       inputRef.current.focus();
     }
   }, [loading]);
 
+
   const handleSearchChange = (e) => {
     const value = e.target.value;
-    setSearchParams(value ? { search: value } : {}); 
+    setSearchParams(value ? { search: value } : {});
   };
 
+
+  
   const filteredTodos = useMemo(() => {
-    return todos.filter((todo) =>
-      todo.title.toLowerCase().includes(search.toLowerCase())
-    );
-  }, [todos, search]);
+    return Array.isArray(todoList)
+      ? todoList.filter((todo) =>
+          todo.title.toLowerCase().includes(search.toLowerCase())
+        )
+      : [];
+  }, [todoList, search]);
+
 
   if (loading) return <p>Caricamento...</p>;
   if (error) return <p>Errore: {error}</p>;
@@ -44,14 +57,26 @@ const TodoComponent = () => {
         onChange={handleSearchChange}
         placeholder="Cerca per titolo..."
       />
-      <ul>
-        {filteredTodos.map((todo) => (
-          <li key={todo.id}>
-            {todo.title} — {todo.completed ? 'completato' : 'non completato'}{' '}
-            <Link to={`/todo/${todo.id}`}>Dettagli</Link>
-          </li>
-        ))}
-      </ul>
+      {filteredTodos.length === 0 ? (
+        <p>Nessun risultato trovato.</p>
+      ) : (
+        <ul>
+          {filteredTodos.map((todo) => (
+            <li key={todo.id}>
+              {todo.title} — {todo.completed ? 'completato' : 'non completato'}{' '}
+              <Link to={`/todo/${todo.id}`}>Dettagli</Link>{' '}
+              {!todo.completed && (
+                <button
+                  onClick={() => dispatch(completeTodo(todo.id))}
+                  disabled={loading}
+                >
+                  Completa
+                </button>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

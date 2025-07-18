@@ -1,21 +1,20 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import { TodoContext } from '../Components/TodoContext';
+import { useSelector } from 'react-redux';
 
 const TodoDetails = () => {
   const { id } = useParams();
-  const { todos } = useContext(TodoContext);
 
- if (!todos || todos.length === 0) {
-  console.log("Controllo - Todos è vuoto:", todos);
-  return <p>Caricamento in corso...</p>;
-}
+  const { todos = [], loading, error } = useSelector((state) => state.todos || {});
 
-const todo = todos.find((t) => t.id.toString() === id);
+  if (loading) return <p>Caricamento in corso...</p>;
+  if (error) return <p>Errore: {error}</p>;
 
-if (!todo) {
-  return <p>To-do non trovato</p>;
-}
+  const todo = todos.find((t) => String(t.id) === id);
+
+  if (!todo) {
+    return <p>To-do non trovato</p>;
+  }
 
   return (
     <div>
